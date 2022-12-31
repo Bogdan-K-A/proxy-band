@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+
 import { Link } from 'react-router-dom'
-import * as usersAPI from '../../services/users-api'
 
-export const UsersList = () => {
-  const [users, setUsers] = useState(null)
-
-  useEffect(() => {
-    usersAPI.fetchUsers().then(setUsers)
-  }, [])
-
+export const UsersList = ({ users }) => {
   return (
     <>
       {users && (

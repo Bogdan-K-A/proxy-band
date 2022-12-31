@@ -7,15 +7,22 @@ export async function fetchUsers() {
 
   return response.data
 }
-
-export async function fetchUsersPosts() {
-  const response = await axios.get('/posts')
+//не приходит id
+export async function fetchUserId(id) {
+  const response = await axios.get(`/users/${id}`)
+  console.log('fetchUserId:', id)
 
   return response.data
 }
 
-export async function fetchUsersAlbums() {
-  const response = await axios.get('/albums')
+export async function fetchUsersPosts(id) {
+  const response = await axios.get(`/users/posts?userId=${id}`)
+  console.log('fetchUsersPosts:', id)
+  return response.data
+}
+
+export async function fetchUsersAlbums(id) {
+  const response = await axios.get(`/users/${id}/albums`)
 
   return response.data
 }

@@ -15,7 +15,6 @@ export const fetchUsersPosts = createAsyncThunk(
   'users/fetchPosts',
   async (id) => {
     const posts = await usersAPI.fetchUsersPosts(id)
-
     return posts
   },
 )

@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { Container } from '../../components/Container/Container'
 import { UsersList } from '../../components/UsersList/UsersList'
+
 import { fetchUsers } from '../../redux/operations'
 import { getUsers } from '../../redux/selectors'
+
+import styled from 'styled-components'
 
 export const UserPage = () => {
   const dispatch = useDispatch()
@@ -13,9 +18,24 @@ export const UserPage = () => {
   }, [dispatch])
 
   return (
-    <div>
-      <h1>Список авторов</h1>
+    <Container>
+      <StyledTitle>Список авторов</StyledTitle>
+
       <UsersList users={users} />
-    </div>
+    </Container>
   )
 }
+
+/* ---------------------------------- Style --------------------------------- */
+const StyledTitle = styled.h1`
+  text-align: center;
+  padding: 25px 0;
+
+  ::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+  }
+`

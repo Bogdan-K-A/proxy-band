@@ -7,17 +7,16 @@ export async function fetchUsers() {
 
   return response.data
 }
-//не приходит id
+
 export async function fetchUserId(id) {
   const response = await axios.get(`/users/${id}`)
-  console.log('fetchUserId:', id)
 
   return response.data
 }
 
 export async function fetchUsersPosts(id) {
-  const response = await axios.get(`/users/posts?userId=${id}`)
-  console.log('fetchUsersPosts:', id)
+  const response = await axios.get(`/users/${id}/posts`)
+
   return response.data
 }
 

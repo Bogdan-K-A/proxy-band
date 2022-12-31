@@ -1,35 +1,62 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getPosts } from '../../redux/selectors'
-import { Link, useParams } from 'react-router-dom'
 import { fetchUsersPosts } from '../../redux/operations'
+import { Container } from '../Container/Container'
+import { Button, Stack } from '@mui/material'
+import styled from 'styled-components'
 
 export const Posts = () => {
-  let { postsId } = useParams()
+  let { userId } = useParams()
   const dispatch = useDispatch()
   const posts = useSelector(getPosts)
-  console.log('posts:', posts)
-  console.log('posts-postsId:', postsId)
-
+  const navigate = useNavigate()
+  const goBack = () => navigate(-1)
   useEffect(() => {
-    dispatch(fetchUsersPosts(postsId))
-  }, [postsId])
+    dispatch(fetchUsersPosts(userId))
+  }, [userId])
 
   return (
-    <div>
-      <button>
-        <Link to="/userCard">Закрыть</Link>
-      </button>
-      {posts && (
-        <ul>
-          {posts.map(({ id, title, body }) => (
-            <li key={id}>
-              <h3>{title}</h3>
-              <p>{body}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <StyledWrapper>
+      <Container>
+        <Stack direction="row" sx={{ justifyContent: 'center' }}>
+          <Button variant="contained" onClick={goBack}>
+            Закрыть
+          </Button>
+        </Stack>
+        {posts && (
+          <StyledList>
+            {posts.map(({ id, title, body }) => (
+              <li key={id}>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </li>
+            ))}
+          </StyledList>
+        )}
+      </Container>
+    </StyledWrapper>
   )
 }
+
+/* ---------------------------------- Style --------------------------------- */
+const StyledWrapper = styled.div`
+  padding: 25px 0;
+`
+
+const StyledList = styled.ol`
+  background: #4adcc073;
+  height: 100%;
+  padding: 40px;
+  margin: 20px 0;
+
+  border-radius: 20px;
+  h3 {
+    margin-bottom: 5px;
+  }
+
+  li {
+    margin-bottom: 15px;
+  }
+`

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Modal = ({ children }) => {
@@ -12,10 +11,12 @@ export const Modal = ({ children }) => {
 
 const StyledModal = styled.div`
   width: 500px;
-  height: 300px;
+  height: 400px;
+  padding: 20px 30px 50px 30px;
 
-  background: grey;
-  border-radius: 10px;
+  background: #4adcbf;
+
+  border-radius: 20px;
 `
 export const Overlay = styled.div`
   position: fixed;

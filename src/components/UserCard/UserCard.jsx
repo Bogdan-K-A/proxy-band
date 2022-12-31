@@ -26,9 +26,6 @@ export const UserCard = () => {
   return (
     <StyledWrapper>
       <Container>
-        {/* <button>
-          <Link to="/">Назад к списку</Link>
-        </button> */}
         <Button variant="contained">
           <Link to="/">Назад к списку</Link>
         </Button>
@@ -48,6 +45,7 @@ export const UserCard = () => {
             <Link to={`/${userId}/albums`}>Альбомы</Link>
           </Button>
         </Stack>
+
         <Outlet />
       </Container>
     </StyledWrapper>

@@ -24,6 +24,8 @@ export const Albums = () => {
 
   useEffect(() => {
     dispatch(fetchUsersAlbums(userId))
+
+    return () => {}
   }, [userId])
 
   return (

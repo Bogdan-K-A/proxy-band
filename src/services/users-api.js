@@ -10,13 +10,11 @@ export async function fetchUsers() {
 
 export async function fetchUserId(id) {
   const response = await axios.get(`/users/${id}`)
-
   return response.data
 }
 
 export async function fetchUsersPosts(id) {
   const response = await axios.get(`/users/${id}/posts`)
-
   return response.data
 }
 

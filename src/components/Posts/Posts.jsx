@@ -18,9 +18,15 @@ export const Posts = () => {
   const dispatch = useDispatch()
   const posts = useSelector(getPosts)
   const navigate = useNavigate()
+
   const goBack = () => navigate(-1)
+
   useEffect(() => {
     dispatch(fetchUsersPosts(userId))
+
+    return () => {
+      dispatch(fetchUsersPosts())
+    }
   }, [userId])
 
   return (

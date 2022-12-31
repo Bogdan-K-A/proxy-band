@@ -12,12 +12,19 @@ export const users = createReducer([], {
 })
 
 //Обработка запроса юзера по ID
-export const user = createReducer(
-  {},
-  {
-    [fetchUserId.fulfilled]: (_, { payload }) => payload,
+
+const userState = {
+  name: '',
+  username: '',
+  email: '',
+}
+export const user = createReducer(userState, {
+  [fetchUserId.fulfilled]: (state, { payload }) => {
+    state.username = payload.username
+    state.email = payload.email
+    state.name = payload.name
   },
-)
+})
 
 //Обработка запроса на пост юзера по ID
 export const posts = createReducer([], {

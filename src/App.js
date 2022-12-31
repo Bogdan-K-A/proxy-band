@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
+//Component
 import { Albums } from './components/Albums/Albums'
 import { Posts } from './components/Posts/Posts'
 import { UserCard } from './components/UserCard/UserCard'

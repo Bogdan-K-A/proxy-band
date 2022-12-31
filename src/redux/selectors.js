@@ -1,3 +1,4 @@
+// Селекторы приходят из reducers
 export const getUsers = (state) => state.users
 export const getUsersId = (state) => state.user
 export const getPosts = (state) => state.posts

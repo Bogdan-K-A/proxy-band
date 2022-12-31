@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Button } from '@mui/material'
 
-//селектор
+//redux
 import { getAlbums } from '../../redux/selectors'
-
-//принимает список альбомов по id
 import { fetchUsersAlbums } from '../../redux/operations'
 
+//Component
 import { Modal } from '../Modal/Modal'
+
+//Style
 import styled from 'styled-components'
-import { Button } from '@mui/material'
 
 export const Albums = () => {
   let { userId } = useParams()

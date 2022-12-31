@@ -1,10 +1,16 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Button, Stack } from '@mui/material'
+
+//redux
 import { getPosts } from '../../redux/selectors'
 import { fetchUsersPosts } from '../../redux/operations'
+
+//Component
 import { Container } from '../Container/Container'
-import { Button, Stack } from '@mui/material'
+
+//Style
 import styled from 'styled-components'
 
 export const Posts = () => {

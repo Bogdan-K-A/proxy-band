@@ -9,6 +9,8 @@ export const Modal = ({ children }) => {
   )
 }
 
+/* ---------------------------------- Style --------------------------------- */
+
 const StyledModal = styled.div`
   width: 500px;
   height: 400px;

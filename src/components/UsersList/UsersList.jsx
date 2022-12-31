@@ -1,8 +1,11 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+
+//Component
 import { Container } from '../Container/Container'
+
+//Style
+import styled from 'styled-components'
 
 export const UsersList = ({ users }) => {
   return (

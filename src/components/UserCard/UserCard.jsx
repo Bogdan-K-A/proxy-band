@@ -1,13 +1,17 @@
-import { Button, Stack } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Outlet, useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import { Button, Stack } from '@mui/material'
 
+//redux
 import { fetchUserId } from '../../redux/operations'
 import { getUsersId } from '../../redux/selectors'
 
+//Component
 import { Container } from '../Container/Container'
+
+//Style
+import styled from 'styled-components'
 
 export const UserCard = () => {
   let { userId } = useParams()

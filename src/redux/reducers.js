@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
+import { clearingFields } from './action'
 import {
   fetchUsers,
   fetchUsersPosts,
@@ -12,18 +13,20 @@ export const users = createReducer([], {
 })
 
 //Обработка запроса юзера по ID
-
 const userState = {
   name: '',
   username: '',
   email: '',
 }
+
 export const user = createReducer(userState, {
   [fetchUserId.fulfilled]: (state, { payload }) => {
     state.username = payload.username
     state.email = payload.email
     state.name = payload.name
   },
+
+  [clearingFields]: (_, { payload }) => payload,
 })
 
 //Обработка запроса на пост юзера по ID

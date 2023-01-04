@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Outlet, useParams } from 'react-router-dom'
+import { clearingFields } from '../../redux/action'
 import { Button, Stack } from '@mui/material'
 
 //redux
@@ -21,6 +22,10 @@ export const UserCard = () => {
 
   useEffect(() => {
     dispatch(fetchUserId(userId))
+
+    return () => {
+      dispatch(clearingFields(user))
+    }
   }, [userId])
 
   return (

@@ -60,6 +60,7 @@ export const UserCard = () => {
 /* ---------------------------------- Style --------------------------------- */
 const Wrapper = styled.div`
   background: #4adcc073;
+  width: 270px;
   height: 100%;
   padding: 20px;
   margin: 20px 0;

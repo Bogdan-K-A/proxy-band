@@ -8,7 +8,6 @@ import { fetchUsers } from '../../redux/operations'
 import { getUsers } from '../../redux/selectors'
 
 import styled from 'styled-components'
-import { Outlet } from 'react-router-dom'
 
 export const UserPage = () => {
   const dispatch = useDispatch()

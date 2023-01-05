@@ -2,9 +2,8 @@ import { createAction } from '@reduxjs/toolkit'
 
 export const clearingFields = createAction('clearingFields')
 
-let action = clearingFields({
+clearingFields({
   name: '',
   username: '',
   email: '',
 })
-console.log(action)

@@ -7,18 +7,24 @@ import { Container } from '../Container/Container'
 //Style
 import styled from 'styled-components'
 
-export const UsersList = ({ users }) => {
+export const UsersList = ({ users, loading }) => {
   return (
     <Container>
       {users && (
         <StyledListWrapper>
-          <StyledList>
-            {users.map((user) => (
-              <li key={user.id}>
-                <Link to={`${user.id}`}>{user.name}</Link>
-              </li>
-            ))}
-          </StyledList>
+          {loading ? (
+            <StyledList>
+              {users.map((user) => (
+                <li key={user.id}>
+                  <Link to={`${user.id}`}>{user.name}</Link>
+                </li>
+              ))}
+            </StyledList>
+          ) : (
+            <StyledList>
+              <p>Loading...</p>
+            </StyledList>
+          )}
         </StyledListWrapper>
       )}
     </Container>

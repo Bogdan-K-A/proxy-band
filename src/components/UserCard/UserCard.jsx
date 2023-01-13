@@ -18,7 +18,7 @@ export const UserCard = () => {
   let { userId } = useParams()
   const dispatch = useDispatch()
   const user = useSelector(getUsersId)
-  const { name, username, email } = user
+  const { name, username, email, loading } = user
 
   useEffect(() => {
     dispatch(fetchUserId(userId))
@@ -36,11 +36,17 @@ export const UserCard = () => {
         </Button>
 
         <Flex>
-          <Wrapper>
-            <p>Name: {name}</p>
-            <p>userName: {username}</p>
-            <p>email: {email}</p>
-          </Wrapper>
+          {loading ? (
+            <Wrapper>
+              <p>Name: {name}</p>
+              <p>userName: {username}</p>
+              <p>email: {email}</p>
+            </Wrapper>
+          ) : (
+            <Wrapper>
+              <p>Loading...</p>
+            </Wrapper>
+          )}
         </Flex>
         <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
           <Button variant="contained">

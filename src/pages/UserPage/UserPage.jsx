@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Container } from '../../components/Container/Container'
@@ -12,16 +12,21 @@ import styled from 'styled-components'
 export const UserPage = () => {
   const dispatch = useDispatch()
   const users = useSelector(getUsers)
+  const [loading, setLoading] = useState(false)
+
+  // console.log(users)
 
   useEffect(() => {
     dispatch(fetchUsers())
+    setLoading(true)
   }, [dispatch])
 
   return (
     <Container>
       <StyledTitle>Список авторов</StyledTitle>
+      {/* {loading ? <UsersList users={users} /> : <p>Loading...</p>} */}
 
-      <UsersList users={users} />
+      <UsersList users={users} loading={loading} />
     </Container>
   )
 }

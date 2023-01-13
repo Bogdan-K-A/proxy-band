@@ -17,6 +17,7 @@ const userState = {
   name: '',
   username: '',
   email: '',
+  loading: false,
 }
 
 export const user = createReducer(userState, {
@@ -24,6 +25,7 @@ export const user = createReducer(userState, {
     state.username = payload.username
     state.email = payload.email
     state.name = payload.name
+    state.loading = true
   },
 
   [clearingFields]: (_, { payload }) => payload,

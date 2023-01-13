@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Button, Stack } from '@mui/material'
@@ -18,12 +18,13 @@ export const Posts = () => {
   const dispatch = useDispatch()
   const posts = useSelector(getPosts)
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const goBack = () => navigate(-1)
 
   useEffect(() => {
     dispatch(fetchUsersPosts(userId))
-
+    setLoading(true)
     return () => {
       dispatch(fetchUsersPosts())
     }
@@ -37,7 +38,7 @@ export const Posts = () => {
             Закрыть
           </Button>
         </Stack>
-        {posts && (
+        {loading ? (
           <StyledList>
             {posts.map(({ id, title, body }) => (
               <li key={id}>
@@ -45,6 +46,10 @@ export const Posts = () => {
                 <p>{body}</p>
               </li>
             ))}
+          </StyledList>
+        ) : (
+          <StyledList>
+            <p>Loading...</p>
           </StyledList>
         )}
       </Container>

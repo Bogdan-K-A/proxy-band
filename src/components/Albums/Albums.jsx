@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Button } from '@mui/material'
@@ -18,13 +18,14 @@ export const Albums = () => {
   const dispatch = useDispatch()
   const albums = useSelector(getAlbums)
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   //возвращает страницу на одну назад
   const goBack = () => navigate(-1)
 
   useEffect(() => {
     dispatch(fetchUsersAlbums(userId))
-
+    setLoading(true)
     return () => {
       dispatch(fetchUsersAlbums())
     }
@@ -36,13 +37,17 @@ export const Albums = () => {
         Закрыть
       </Button>
 
-      {albums && (
+      {loading ? (
         <StyledList>
           {albums.map(({ id, title }) => (
             <li key={id}>
               <p>{title}</p>
             </li>
           ))}
+        </StyledList>
+      ) : (
+        <StyledList>
+          <p>Loading...</p>
         </StyledList>
       )}
     </Modal>
